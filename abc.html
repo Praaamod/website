@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket Booking Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+        }
+
+        select, input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Ticket Booking Form</h2>
+        <form action="defult.php" method="post">
+            <div class="form-group">
+                <label for="ticketNumber">Ticket Number:</label>
+                <input type="text" id="ticketNumber" name="ticketNumber" required>
+            </div>
+
+            <div class="form-group">
+                <label for="vehicleType">Vehicle Type:</label>
+                <select id="vehicleType" name="vehicleType" required>
+                    <option value="Bus">Bus</option>
+                    <option value="Hiace">Hiace</option>
+                    <option value="Scorpio">Scorpio</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="seatNumber">Seat Number:</label>
+                <select id="seatNumber" name="seatNumber" required>
+                    <option value="Row1A">Row 1 - A</option>
+                    <option value="Row1B">Row 1 - B</option>
+                    <option value="Row1C">Row 1 - C</option>
+                    <option value="Row1D">Row 1 - D</option>
+                    <!-- Add more seat options as needed -->
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="destination">Destination:</label>
+                <select id="destination" name="destination" required>
+                    <option value="Kathmandu">Kathmandu</option>
+                    <option value="Pokhara">Pokhara</option>
+                    <option value="Jhapa">Jhapa</option>
+                    <option value="Kanchanpur">Kanchanpur</option>
+                    <!-- Add more destination options as needed -->
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="price">Price:</label>
+                <input type="text" id="price" name="price" readonly>
+            </div>
+
+            <input type="submit" value="Book Ticket">
+        </form>
+    </div>
+
+    <script>
+        // JavaScript to calculate and set the price based on the selected vehicle type
+        const vehicleTypeSelect = document.getElementById("vehicleType");
+        const priceInput = document.getElementById("price");
+
+        vehicleTypeSelect.addEventListener("change", function () {
+            const selectedVehicleType = vehicleTypeSelect.value;
+            let price = 0;
+
+            switch (selectedVehicleType) {
+                case "Bus":
+                    price = 500;
+                    break;
+                case "Hiace":
+                    price = 550;
+                    break;
+                case "Scorpio":
+                    price = 600;
+                    break;
+                default:
+                    price = 0;
+            }
+
+            priceInput.value = price;
+        });
+    </script>
+</body>
+</html>
